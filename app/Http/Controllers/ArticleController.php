@@ -64,13 +64,19 @@ class ArticleController extends Controller
                 $article->a_la_une = $request->a_la_une;
                 // Update dans la base de donnée
                 $article->update();
-                return redirect('/articles')->with('status', 'l\'article a bien été modifier');
+                return redirect('/')->with('status', 'l\'article a bien été modifier');
             }
         // supprimer un article
         public function supprimer_article ($id)
             {
                 $article  = Article::find($id);
                 $article->delete();
-                return redirect('/articles')->with('status', 'l\'article a bien été supprimer');
+                return redirect('/')->with('status', 'l\'article a bien été supprimer');
             }
+        //afficher plus d'information
+        public function voir_detailles($id)
+        {
+            $article = Article::find($id);
+            return view('articles.detailles', compact('article'));
+        }
 }
