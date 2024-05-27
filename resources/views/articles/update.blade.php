@@ -23,18 +23,18 @@
     <form action="/update/traitement" method="POST" style="margin: auto;">
         @csrf
         {{-- ajouter la route traitement after --}}
-        <input type="hidden" name="id" value="{{$article->id}}">
+        <input type="hidden" name="id" value="{{$articles->id}}">
     <div class="mb-3">
         <label for="nom_article" class="form-label">Nom de l'article</label>
-        <input type="text" class="form-control" id="nom_article" placeholder="apprendre en ligne" name="nom" style="width: 50%;" value="{{$article->nom}}">
+        <input type="text" class="form-control" id="nom_article" placeholder="apprendre en ligne" name="nom" style="width: 50%;" value="{{$articles->nom}}">
       </div>
       <div>
         <label for="image" class="form-label">Ajouter une image</label>
-        <input class="form-control form-control-ls" id="image" type="text" name="image" style="width: 50%;" value="{{$article->image}}">
+        <input class="form-control form-control-ls" id="image" type="text" name="image" style="width: 50%;" value="{{$articles->image}}">
       </div>
       <div class="mb-3">
         <label for="description" class="form-label">Description</label>
-        <textarea class="form-control" id="description" rows="3" name="description" value="{{$article->description}}"></textarea>
+        <textarea class="form-control" id="description" rows="3" name="description" value="{{$articles->description}}"></textarea>
       </div>
       <div class="form-group">
         <label for="date_creation">Date de création :</label>
@@ -42,13 +42,13 @@
     </div>
 
     <div class="form-check">
-        <input class="form-check-input" type="radio" name="a_la_une" id="a_la_une_oui" value="{{$article->date_création}}">
+        <input class="form-check-input" type="radio" name="a_la_une" id="a_la_une_oui" value="1" {{ $articles->a_la_une ? 'checked' : '' }}>
         <label class="form-check-label" for="a_la_une_oui">
             OUI
         </label>
     </div>
     <div class="form-check">
-        <input class="form-check-input" type="radio" name="a_la_une" id="a_la_une_non" checked value="{{$article->date_création}}">
+        <input class="form-check-input" type="radio" name="a_la_une" id="a_la_une_non" value="0" {{ !$articles->a_la_une ? 'checked' : '' }}>
         <label class="form-check-label" for="a_la_une_non">
             Non
         </label>

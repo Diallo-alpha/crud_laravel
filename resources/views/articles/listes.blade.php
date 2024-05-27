@@ -9,6 +9,11 @@
   <body>
     <center>
     <h1>Articles</h1>
+    @if (session('status'))
+    <div class="alert alert-success">
+        {{session('status')}}
+    </div>
+@endif
     </center>
     @foreach ($articles as $article)
     <div class="container" style="display: flex; flex-direction:row; justify-content:space-between;">

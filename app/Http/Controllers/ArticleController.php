@@ -46,4 +46,25 @@ class ArticleController extends Controller
                 return view('articles.update', compact('articles'));
             }
 
+        public function update_article_traitement(Request $request)
+            {
+                $request->validate([
+                    'nom' => 'required',
+                    'description' => 'required',
+                    'image' => 'required',
+                    'a_la_une' => 'required|boolean',
+
+                ]);
+
+                $article = Article::find($request->id);
+                $article->nom = $request->nom;
+                $article->description = $request->description;
+                $article->image = $request->image;
+                $article->date_création = $request->input('date_création', now());
+                $article->a_la_une = $request->a_la_une;
+                // Update dans la base de donnée
+                $article->update();
+                return redirect('/articles')->with('status', 'l\'article a bien été modifier');
+            }
+
 }
