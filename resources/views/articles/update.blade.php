@@ -20,7 +20,7 @@
     @endforeach
     </ul>
     </center>
-    <form action="/update/traitement" method="POST" style="margin: auto;">
+    <form action="/mise_à_jour/traitement" method="POST" style="margin: auto;">
         @csrf
         {{-- ajouter la route traitement after --}}
         <input type="hidden" name="id" value="{{$articles->id}}">

@@ -13,13 +13,13 @@ class ArticleController extends Controller
             return view('articles.listes', compact('articles'));
         }
 
-    public function ajouter_article()
+    public function ajouter_articles()
         {
             return view('articles.ajouter');
         }
 
         // function pour l'ajout
-        public function add_article(Request $request)
+        public function ajouter_article(Request $request)
             {
                 $request->validate([
                     'nom' => 'required',
@@ -37,16 +37,16 @@ class ArticleController extends Controller
                 $article->a_la_une = $request->a_la_une;
                 // Enregistrer dans la base de donnée
                 $article->save();
-                return redirect('/ajouter')->with('status', 'l\'article a bien été ajouter');
+                return redirect('/')->with('status', 'l\'article a bien été ajouter');
             }
 
-        public function update_article($id)
+        public function mise_à_jour_article($id)
             {
                 $articles = Article::find($id);
                 return view('articles.update', compact('articles'));
             }
 
-        public function update_article_traitement(Request $request)
+        public function mise_à_jour_article_traitement(Request $request)
             {
                 $request->validate([
                     'nom' => 'required',
@@ -66,5 +66,11 @@ class ArticleController extends Controller
                 $article->update();
                 return redirect('/articles')->with('status', 'l\'article a bien été modifier');
             }
-
+        // supprimer un article
+        public function supprimer_article ($id)
+            {
+                $article  = Article::find($id);
+                $article->delete();
+                return redirect('/articles')->with('status', 'l\'article a bien été supprimer');
+            }
 }

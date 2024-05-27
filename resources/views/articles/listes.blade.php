@@ -9,6 +9,7 @@
   <body>
     <center>
     <h1>Articles</h1>
+    <a href="/ajouter" class="btn btn-primary" style="text-decoration: none;">ajouter un article</a>
     @if (session('status'))
     <div class="alert alert-success">
         {{session('status')}}
@@ -21,13 +22,12 @@
         <img src={{$article->image}} class="card-img-top" alt="mage-article">
         <div class="card-body">
           <h5 class="card-title">{{$article->nom}}</h5>
-          <p class="card-text"><a href="#">{{$article->description}}</a></p>
+          <p class="card-text"><a href="#" style="text-decoration: none; color:#000000;">{{$article->description}}</a></p>
             <br>
             <span>{{$article->date_création}}</span>
         </div>
-        <a href="/update-articles/{{$article->id}}" class="btn btn-primary">Modifier</a>
-        <a href="#" class="btn btn-danger">Supprimer</a>
-
+        <a href="/mise_à_jour-articles/{{$article->id}}" class="btn btn-primary">Modifier</a>
+        <a href="/supprimer-articles/{{$article->id}}" class="btn btn-danger">Supprimer</a>
       </div>
       {{-- carde2 --}}
     </div>
